@@ -1,0 +1,39 @@
+<?php
+/**
+ *
+ * @description Magento Module for Rely Payment
+ * @author   Codilar Team Player <ankith@codilar.com>
+ * @license  Open Source
+ * @link     https://www.codilar.com
+ * @copyright Copyright © 2020 Codilar Technologies Pvt. Ltd.. All rights reserved
+ *
+ */
+
+use Magento\Catalog\Block\Product\View;
+use Magento\Catalog\Pricing\Price\FinalPrice;
+use Rely\Payment\ViewModel\CatalogViewModel;
+?>
+<?php
+/**
+ * @var $block View
+ * @var $viewModel CatalogViewModel
+ */
+?>
+<?php
+$viewModel = $block->getData('view_model');
+?>
+<?php if ($priceAmount = $block
+    ->getProduct()
+    ->getPriceInfo()
+    ->getPrice(FinalPrice::PRICE_CODE)->getAmount()
+):?>
+<div class="strip-widget-content-text" id="click-me">
+    <?=$block->escapeHtml(__('or 3 interest-free payments of ' .
+        $viewModel->getCurrencyCode() .
+        number_format($block->escapeHtmlAttr($priceAmount)/3), 2, '.', ','))?>
+    <img src="<?=$block->escapeHtml(__($viewModel->getLogo()));?>" alt="rely logo"/>
+    <span style="text-decoration: underline;margin-left: 4px;font-weight: 800;">
+        Learn more
+    </span>
+</div>
+<?php endif;?>
