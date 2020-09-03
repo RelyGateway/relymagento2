@@ -1,5 +1,5 @@
 {
-    "name": "rely/relymagento2",
+    "name": "rely/magento2-payment-module",
     "description": "Integration of Rely Payment Gateway",
     "type": "magento2-module",
     "version": "1.1.0",
